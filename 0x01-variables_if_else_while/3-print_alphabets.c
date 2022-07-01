@@ -1,20 +1,22 @@
 #include <stdio.h>
+#include <unistd.h>
 /**
- * main - main block
- * Description: Use `putchar` to print all letters but the letter 'q' and 'e'.
- * Return: 0
+ * main - Entry point
+ * Description: prints alphabet in lowercase then uppercase
+ * Return: Always 0 (success)
  */
 int main(void)
 {
-	char c = 'a';
+	int ch;
 
-	while (c <= 'z')
+	for (ch = 'a'; ch <= 'z'; ch++)
 	{
-		if (c != 'q' && c != 'e')
-			putchar(c);
-		c++;
+		putchar(ch);
+	}
+	for (ch = 'A'; ch <= 'Z'; ch++)
+	{
+		putchar(ch);
 	}
 	putchar('\n');
-
 	return (0);
 }
