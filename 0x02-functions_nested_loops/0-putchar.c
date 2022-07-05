@@ -8,7 +8,7 @@
  */
 int main(void)
 {
-	char holberton[] = "Holberton";
+	char holberton[] = "_putchar";
 	int i = 0;
 
 	while (holberton[i] != '\0')
