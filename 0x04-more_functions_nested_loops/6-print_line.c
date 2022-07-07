@@ -1,4 +1,4 @@
-6-print_line.c#include "main.h"
+#include "main.h"
 
 /**
 * print_line -> printing line
