@@ -1,10 +1,10 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef HOLBERTON_H
+#define HOLBERTON_H
 
 /**
  * File: main.h
- * Auth: Firdaus
- * Desc: Header file containing prototypes for all functions
+ * Auth: Jay Noah
+ * Desc: Header fiile containing prototypes for all functions
  *       used in the 0x07-pointers_arrays_strings directory.
  */
 
