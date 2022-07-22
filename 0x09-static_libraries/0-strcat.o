@@ -1,1 +1,0 @@
-gcc -g -O -c 0-strcat.o

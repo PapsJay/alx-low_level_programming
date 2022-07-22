@@ -1,2 +1,0 @@
-gcc -g -O -c 1-isdigit.o
-
