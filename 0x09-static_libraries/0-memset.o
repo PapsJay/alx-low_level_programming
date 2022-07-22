@@ -1,0 +1,1 @@
+gcc -g -O -c 0-memset.o
