@@ -1,1 +1,1 @@
-gcc -g -0 -c 0-isupper.c
+gcc -g -0 -c 0-isupper.o
