@@ -1,52 +1,43 @@
 #include "lists.h"
-
 /**
- * insert_dnodeint_at_idx - insert a new node at given position
- * @h: double pointer to head
- * @idx: index to insert into
- * @n: value to store in new node
- * Return: Address of new node, or NULL if failed
+ * insert_dnodeint_at_index - inserts a new node at a given position
+ * @h: a double pointer to the head of the DLL
+ * @idx: index of the list where the new node should be added
+ * @n: the content of the new node to be added
+ * Return: the address of the new node or NULL if it failed
  */
-dlistint_t *insert_dnodeint_at_idx(dlistint_t **h, unsigned int idx, int n)
+dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
-	unsigned int c;
-	dlistint_t *tmp, *prev, *new;
+	dlistint_t *new_node;
+	dlistint_t *aux_h;
 
-	new = malloc(sizeof(dlistint_t));
-	if (new == NULL)
-		return (NULL);
-	new->n = n;
-	for (tmp = *h, c = 1; tmp && c < idx; c++, tmp = tmp->next)
-		prev = tmp;
+	/* case asked idx is 0 or h is null at the beggining, recursion */
 	if (idx == 0)
 	{
-		*h = new; new->prev = NULL;
-		new->next = (tmp == NULL) ? NULL : tmp;
-		return (new);
+		return (add_dnodeint(h, n));
 	}
-	if (idx == 1)
+	/* traverse the list */
+	aux_h = *h;
+	while (idx > 1)
 	{
-		prev = *h;
-		tmp = ((*h)->next == NULL) ? NULL : (*h)->next;
-		new->prev = prev; new->next = tmp; prev->next = new;
-		if (tmp)
-			tmp->prev = new;
-		return (new);
+		aux_h = aux_h->next;
+		if (aux_h == NULL)
+			return (NULL);
+		idx--;
 	}
-	if (idx == c && tmp == NULL)
+	/* case at the end, recursion */
+	if (aux_h->next == NULL)
 	{
-		if (prev != NULL)
-		{
-			new->prev = prev; new->next = NULL;
-			prev->next = new; return (new);
-		}
-		free(new); return (NULL);
+		return (add_dnodeint_end(h, n));
 	}
-	else if (idx != c && tmp == NULL)
-	{
-		free(new); return (NULL);
-	}
-	prev = tmp; tmp = tmp->next; new->prev = prev;
-	new->next = tmp; prev->next = new; tmp->prev = new;
-	return (new);
+	/* idx found then add new_node */
+	new_node = malloc(sizeof(dlistint_t));
+	if (new_node == NULL)
+		return (NULL);
+	new_node->n = n;
+	new_node->prev = aux_h;
+	new_node->next = aux_h->next;
+	aux_h->next->prev = new_node;
+	aux_h->next = new_node;
+	return (new_node);
 }
